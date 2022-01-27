@@ -1,29 +1,25 @@
 const express = require("express");
-const morgan = require("morgan");
-const helmet = require("helmet");
-const cors = require("cors");
-
-require("dotenv").config();
-
-const middlewares = require("./middlewares");
-const api = require("./api");
-
+const serverless = require("serverless-http");
 const app = express();
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+require("dotenv/config");
 
-app.use(morgan("dev"));
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
+//MODELS
+const errors = require("./routes/errors");
 
-app.get("/", (req, res) => {
-  res.json({
-    message: process.env.DB_CONNECTION,
-  });
+//DB CONNECTION
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
+  console.log("CONNECTED");
 });
 
-app.use("/api/v1", api);
+//MIDDLEWARES
+app.use(cors());
+app.use(bodyParser.json());
 
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
+//ROUTES
+app.use("/errors", errors);
 
 module.exports = app;
+module.exports.handler = serverless(app);
