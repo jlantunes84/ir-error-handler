@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({
-    message: process.env.PORT,
+    message: process.env.WEB_CONCURRENCY,
   });
 });
 
