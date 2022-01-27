@@ -30,6 +30,7 @@ router.post("/", async (req, res) => {
     timestamp: req.body.timestamp,
     pk: req.body.pk,
     solved: false,
+    comment: req.body.comment,
     payload: req.body.payload,
   });
 
