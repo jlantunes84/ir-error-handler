@@ -7,6 +7,7 @@ const ErrorSchema = mongoose.Schema({
   pk: { type: String, require: true },
   solved: { type: Boolean },
   comment: { type: String },
+  navigator: { type: Object },
   payload: { type: String, require: true },
 });
 

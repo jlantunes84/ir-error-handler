@@ -31,6 +31,7 @@ router.post("/", async (req, res) => {
     pk: req.body.pk,
     solved: false,
     comment: req.body.comment,
+    navigator: req.body.navigator,
     payload: req.body.payload,
   });
 
