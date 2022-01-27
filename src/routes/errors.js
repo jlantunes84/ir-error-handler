@@ -28,12 +28,17 @@ router.post("/", async (req, res) => {
     user: req.body.user,
     version: req.body.version,
     timestamp: req.body.timestamp,
-    payload: req.body.payload,
+    pk: req.body.pk,
     solved: false,
+    payload: req.body.payload,
   });
 
   const canAdd =
-    !!error.user || !!error.version || !!error.timestamp || !!error.payload;
+    !!error.user ||
+    !!error.version ||
+    !!error.timestamp ||
+    !!error.payload ||
+    !!error.pk;
 
   if (canAdd) {
     try {
