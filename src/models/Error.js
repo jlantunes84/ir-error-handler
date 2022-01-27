@@ -8,7 +8,7 @@ const ErrorSchema = mongoose.Schema({
   solved: { type: Boolean },
   comment: { type: String },
   navigator: { type: Object },
-  payload: { type: String, require: true },
+  payload: { type: Array, require: true },
 });
 
 module.exports = mongoose.model("Errors", ErrorSchema);
