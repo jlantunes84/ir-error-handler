@@ -5,7 +5,7 @@ const SearchLogSchema = mongoose.Schema({
   version: { type: String, require: true },
   timestamp: { type: Date, require: true },
   navigator: { type: Object },
-  payload: { type: Array, require: true },
+  payload: { type: Object, require: true },
 });
 
 module.exports = mongoose.model("SearchLogs", SearchLogSchema);
