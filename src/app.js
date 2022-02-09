@@ -8,6 +8,7 @@ require("dotenv/config");
 
 //MODELS
 const errors = require("./routes/errors");
+const searchLogs = require("./routes/searchLogs");
 
 //DB CONNECTION
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 
 //ROUTES
 app.use("/errors", errors);
+app.use("/searchLogs", searchLogs);
 
 module.exports = app;
 module.exports.handler = serverless(app);
